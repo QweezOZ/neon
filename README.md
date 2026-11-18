@@ -37,7 +37,7 @@ python -m http.server 8000
 5. **Settings → Pages → Build and deployment**:
    Source — *Deploy from a branch*, Branch — `main`, папка — `/ (root)` → **Save**.
 6. Через 1–2 минуты сайт откроется по адресу:
-   `https://ВАШ-ЛОГИН.github.io/neon/`
+   `https://qweezoz.github.io/neon/` (этот сайт уже опубликован там).
 
 Все пути в сайте относительные, поэтому он одинаково работает и в корне домена,
 и в подпапке `/neon/`.
@@ -96,8 +96,8 @@ var BOOKING_URL = 'https://dikidi.ru/123456';
 - услуги и цены (сейчас только теги: маникюр, педикюр, покрытие, дизайн);
 - соцсети (Instagram и т. п.);
 - реальную ссылку на онлайн-запись;
-- после публикации — прописать полный адрес сайта в `og:image`
-  (`https://ВАШ-ЛОГИН.github.io/neon/assets/og-image.jpg`) и в JSON-LD (`url`).
+- если поменяется адрес сайта — обновить `canonical`, `og:image` и `url`
+  в `index.html` (сейчас там `https://qweezoz.github.io/neon/`).
 
 ## Структура
 
