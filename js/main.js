@@ -53,6 +53,23 @@
     });
   }
 
+  /* ---------- клик по услуге: прокрутка и подсветка кнопки записи ---------- */
+  var bookingSection = doc.getElementById('booking');
+  var bookingBtn = bookingSection ? bookingSection.querySelector('.contact-card__cta .btn') : null;
+
+  if (bookingBtn) {
+    Array.prototype.forEach.call(doc.querySelectorAll('.service'), function (card) {
+      card.addEventListener('click', function () {
+        bookingBtn.classList.remove('is-flash');
+        void bookingBtn.offsetWidth; // перезапуск анимации
+        bookingBtn.classList.add('is-flash');
+        window.setTimeout(function () {
+          bookingBtn.classList.remove('is-flash');
+        }, 2600);
+      });
+    });
+  }
+
   /* ---------- шапка при прокрутке ---------- */
   var header = doc.getElementById('header');
   var ticking = false;

@@ -398,6 +398,8 @@ a { color: inherit; }
   --c: var(--pink);
   display: flex;
   flex-direction: column;
+  color: inherit;
+  text-decoration: none;
   padding: 7px 7px 4px;
   border: 1px solid rgba(var(--c), 0.42);
   border-radius: 18px;
@@ -465,6 +467,28 @@ a { color: inherit; }
 
 @media (min-width: 900px) {
   .works__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+#booking {
+  scroll-margin-top: 88px;
+}
+
+@keyframes booking-flash {
+  0%, 100% {
+    box-shadow:
+      0 0 14px rgba(var(--pink), 0.28),
+      inset 0 0 14px rgba(var(--pink), 0.14);
+  }
+  35% {
+    box-shadow:
+      0 0 0 6px rgba(var(--pink), 0.16),
+      0 0 44px rgba(var(--pink), 0.85),
+      inset 0 0 26px rgba(var(--pink), 0.35);
+  }
+}
+
+.contact-card .btn.is-flash {
+  animation: booking-flash .8s ease-in-out 3;
 }
 
 /* ---------- контакты ---------- */
