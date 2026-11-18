@@ -54,8 +54,7 @@
   }
 
   /* ---------- клик по услуге: прокрутка и подсветка кнопки записи ---------- */
-  var bookingSection = doc.getElementById('booking');
-  var bookingBtn = bookingSection ? bookingSection.querySelector('.contact-card__cta .btn') : null;
+  var bookingBtn = doc.getElementById('booking');
 
   if (bookingBtn) {
     Array.prototype.forEach.call(doc.querySelectorAll('.service'), function (card) {
@@ -66,6 +65,9 @@
         window.setTimeout(function () {
           bookingBtn.classList.remove('is-flash');
         }, 2600);
+        window.setTimeout(function () {
+          try { bookingBtn.focus({ preventScroll: true }); } catch (e) { /* старые браузеры */ }
+        }, 700);
       });
     });
   }
