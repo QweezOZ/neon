@@ -435,6 +435,26 @@ a { color: inherit; }
   text-shadow: 0 0 16px rgba(var(--cyan), 0.9);
 }
 
+.contact-card__vk {
+  display: block;
+  width: fit-content;
+  margin-top: 12px;
+}
+
+.footer__link {
+  color: rgba(var(--cyan), 0.9);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(var(--cyan), 0.35);
+  padding-bottom: 1px;
+  transition: color .25s ease, text-shadow .25s ease, border-color .25s ease;
+}
+
+.footer__link:hover {
+  color: #fff;
+  border-color: rgba(var(--cyan), 0.85);
+  text-shadow: 0 0 14px rgba(var(--cyan), 0.8);
+}
+
 .contact-card__hint {
   margin: 0 0 14px;
   font-size: 13px;
@@ -507,6 +527,9 @@ a { color: inherit; }
     0 0 40px rgba(var(--pink), 0.35),
     0 0 130px rgba(var(--pink), 0.16);
   animation: lightbox-in .28s ease both;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 @keyframes lightbox-in {

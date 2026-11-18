@@ -10,7 +10,7 @@
      сообщение-заглушку. Когда появится ссылка, вставьте её:
      var BOOKING_URL = 'https://dikidi.ru/...';
      ------------------------------------------------------- */
-  var BOOKING_URL = '';
+  var BOOKING_URL = 'https://dikidi.ru/1320558';
 
   var doc = document;
   var toast = doc.getElementById('toast');
@@ -153,23 +153,31 @@
       if (event.key === 'ArrowRight') step(1);
     });
 
-    /* свайпы на телефоне */
+    /* листание свайпом/мышью: справа налево — следующее фото */
     var startX = 0;
     var startY = 0;
+    var pending = false;
 
-    lightbox.addEventListener('touchstart', function (event) {
-      startX = event.changedTouches[0].clientX;
-      startY = event.changedTouches[0].clientY;
-    }, { passive: true });
+    lightbox.addEventListener('pointerdown', function (event) {
+      if (event.target.closest('button')) return;
+      startX = event.clientX;
+      startY = event.clientY;
+      pending = true;
+    });
 
-    lightbox.addEventListener('touchend', function (event) {
-      var dx = event.changedTouches[0].clientX - startX;
-      var dy = event.changedTouches[0].clientY - startY;
+    lightbox.addEventListener('pointerup', function (event) {
+      if (!pending) return;
+      pending = false;
+      var dx = event.clientX - startX;
+      var dy = event.clientY - startY;
+
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
         step(dx < 0 ? 1 : -1);
-      } else if (dy > 70 && Math.abs(dy) > Math.abs(dx)) {
+      } else if (dy > 80 && Math.abs(dy) > Math.abs(dx)) {
         closeLightbox();
       }
-    }, { passive: true });
+    });
+
+    lightbox.addEventListener('pointercancel', function () { pending = false; });
   }
 })();
